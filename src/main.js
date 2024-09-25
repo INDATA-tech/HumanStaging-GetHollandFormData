@@ -27,7 +27,9 @@ export default async ({ req, res, log, error }) => {
     log(link.Email)
 
     // ilgili cevabı al
-    var answers = database.getDocument("65dc57b1e8322b0426ae","65e97978db53e3998c12","66f3d3d8882324d2315b");
+    var answers = await database.listDocuments("65dc57b1e8322b0426ae","65e97978db53e3998c12", [
+      Query.equal('EmailOfFilledBy', link.Email)
+    ]);
     log(answers);
     // log(answers[0].RawData);
 
