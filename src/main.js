@@ -22,7 +22,8 @@ export default async ({ req, res, log, error }) => {
     log(req.bodyRaw)
     log("appwrite db id")
     log(process.env.APPWRITE_DATABASE_ID)
-    var link = database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11", String(req.bodyRaw.toString()));
+    var linkId = req.bodyRaw.toString();
+    var link = database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11", String(linkId));
     log("link")
     log(link)
     // ilgili cevabı al
