@@ -31,7 +31,7 @@ export default async ({ req, res, log, error }) => {
       Query.equal('EmailOfFilledBy', link.Email)
     ]);
     log(answers);
-    // log(answers[0].RawData);
+    log(answers[0].RawData);
 
     // Log messages and errors to the Appwrite Console
     // These logs won't be seen by your end users
