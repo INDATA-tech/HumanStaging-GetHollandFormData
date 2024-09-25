@@ -16,7 +16,7 @@ export default async ({ req, res, log, error }) => {
     // answers'ı al
      //var linkData = await database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11","66f3d7f300089d76b8e7");
     log("Onur")
-    log(linkData)
+    //log(linkData)
     log("requst")
     log(req.body)
     log(req.bodyRaw)
