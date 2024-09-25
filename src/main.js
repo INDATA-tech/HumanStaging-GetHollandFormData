@@ -36,14 +36,14 @@ export default async ({ req, res, log, error }) => {
     // Log messages and errors to the Appwrite Console
     // These logs won't be seen by your end users
     // log(`Total users: ${response.total}`);
-
+    return res.text(answers[0].RawData)
     
   } catch(err) {
     error("Could not list users: " + err.message);
   }
 
   // cevabı rawdata olarak gönder.
-  return res.text("Pong");
+  return res.text("Hata");
 
   /*return res.json({
     motto: "Build like a team of hundreds_",
