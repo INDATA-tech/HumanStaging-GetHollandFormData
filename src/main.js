@@ -24,6 +24,8 @@ export default async ({ req, res, log, error }) => {
     var link = await database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11", req.bodyRaw);
     log("link")
     log(link)
+    log(link.Email)
+
     // ilgili cevabı al
     var answers = database.listDocuments(process.env.APPWRITE_DATABASE_ID,"65e97978db53e3998c12", [
         Query.equal('EmailOfFilledBy', link.Email)
