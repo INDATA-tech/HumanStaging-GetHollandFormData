@@ -28,7 +28,7 @@ export default async ({ req, res, log, error }) => {
 
     // ilgili cevabı al
     var answers = database.listDocuments("65dc57b1e8322b0426ae","65e97978db53e3998c12", [
-        Query.select(['$id', '66f15e251d25b2399043']),
+        Query.select(['id', '66f15e251d25b2399043']),
     ]);
     log(answers);
     log(answers[0].RawData);
