@@ -28,7 +28,7 @@ export default async ({ req, res, log, error }) => {
 
     // ilgili cevabı al
     var answers = database.listDocuments("65dc57b1e8322b0426ae","65e97978db53e3998c12", [
-        Query.equal('EmailOfFilledBy', link.Email)
+        Query.equal('EmailOfFilledBy', "onur.demir@indata.com.tr")
     ]);
     log(answers);
     log(answers[0].RawData);
