@@ -7,29 +7,37 @@ export default async ({ req, res, log, error }) => {
   const client = new Client()
     .setEndpoint(process.env.APPWRITE_FUNCTION_API_ENDPOINT)
     .setProject(process.env.APPWRITE_FUNCTION_PROJECT_ID)
-    .setKey(req.headers['x-appwrite-key'] ?? '');
-  const users = new Users(client);
+    .setKey(process.env.APPWRITE_FUNCTION_APIKEY);
+  let database = new Databases(client);
 
+  //var jsondata = JSON.parse();
+  
   try {
-    const response = await users.list();
+    // answers'ı al
+    var link = database.getDocuments(process.env.APPWRITE_DATABASE_ID,"65dc59d55a33e2567c11", req.body);
+    // ilgili cevabı al
+    var answers = database.listDocuments(process.env.APPWRITE_DATABASE_ID,"65e97978db53e3998c12", [
+        Query.equal('EmailOfFilledBy', link.Email)
+    ]);
+
+    log(answers[0].RawData);
+
     // Log messages and errors to the Appwrite Console
     // These logs won't be seen by your end users
-    log(`Total users: ${response.total}`);
+    // log(`Total users: ${response.total}`);
+
+    
   } catch(err) {
     error("Could not list users: " + err.message);
   }
 
-  // The req object contains the request data
-  if (req.path === "/ping") {
-    // Use res object to respond with text(), json(), or binary()
-    // Don't forget to return a response!
-    return res.text("Pong");
-  }
+  // cevabı rawdata olarak gönder.
+  return res.text("Pong");
 
-  return res.json({
+  /*return res.json({
     motto: "Build like a team of hundreds_",
     learn: "https://appwrite.io/docs",
     connect: "https://appwrite.io/discord",
     getInspired: "https://builtwith.appwrite.io",
-  });
+  });*/
 };
