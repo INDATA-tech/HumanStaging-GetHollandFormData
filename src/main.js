@@ -14,13 +14,13 @@ export default async ({ req, res, log, error }) => {
   
   try {
     // answers'ı al
-     var linkData = await database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11","66f3d7f300089d76b8e7");
-    log("Onur")
-    log(linkData)
-    log("requst")
-    log(req.body)
-    log(req.bodyRaw)
-    log("appwrite db id")
+    // var linkData = await database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11","66f3d7f300089d76b8e7");
+    //log("Onur")
+    //log(linkData)
+    //log("requst")
+    //log(req.body)
+    //log(req.bodyRaw)
+    //log("appwrite db id")
     var link = await database.getDocument("65dc57b1e8322b0426ae","65dc59d55a33e2567c11", req.bodyRaw);
     log("link")
     log(link)
@@ -31,12 +31,12 @@ export default async ({ req, res, log, error }) => {
       Query.equal('EmailOfFilledBy', link.Email)
     ]);
     log(answers);
-    log(answers[0].RawData);
+    log(answers.documents[0].RawData);
 
     // Log messages and errors to the Appwrite Console
     // These logs won't be seen by your end users
     // log(`Total users: ${response.total}`);
-    return res.text(answers[0].RawData)
+    return res.text(answers.documents[0].RawData)
     
   } catch(err) {
     error("Could not list users: " + err.message);
