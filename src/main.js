@@ -19,7 +19,7 @@ export default async ({ req, res, log, error }) => {
     var answers = database.listDocuments(process.env.APPWRITE_DATABASE_ID,"65e97978db53e3998c12", [
         Query.equal('EmailOfFilledBy', link.Email)
     ]);
-
+    log(answers);
     log(answers[0].RawData);
 
     // Log messages and errors to the Appwrite Console
