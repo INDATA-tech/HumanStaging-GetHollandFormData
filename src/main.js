@@ -17,6 +17,8 @@ export default async ({ req, res, log, error }) => {
     log("requst")
     log(req.body)
     log(req.bodyRaw)
+    log("appwrite db id")
+    log(process.env.APPWRITE_DATABASE_ID)
     var link = database.getDocument(process.env.APPWRITE_DATABASE_ID,"65dc59d55a33e2567c11", req.body);
     log("link")
     log(link)
